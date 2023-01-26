@@ -91,3 +91,12 @@ samples High --> CV high
     - or simply don't know which range to search for the best parameters
 you can try first RandomizedSearchCV with big ranges 
 Take the bestparam and run GridSearchCV with more narrow ranges 
+
+
+```mermaid
+flowchart LR
+    A[Hard] -->|Text| B(Round)
+    B --> C{Decision}
+    C -->|One| D[Result 1]
+    C -->|Two| E[Result 2]
+```
