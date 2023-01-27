@@ -24,6 +24,20 @@ Cleaning : transforming the data so that it is digestible by your tools (e.g. de
 ### 3. Split Data
 **Split the data** to train and test data.
 
+
+----------
+### 4. Create accuracy baseline
+If you can use your intuition to create a very simple rule that has score of 70% .
+you can first try Logistic Regression Algo as first simple step in ML ex 75%
+then, complex Machine Learning solution considered a good one if it scores at least 80%.
+
+
+you should only see the training set to build the simple rule. 
+Then, check how well your rule is by using it to make predictions on the test set.
+
+
+
+### 5 Setup pipeline
 **prepare the pipeline**
 Note : K-Fold Cross Validation.usually between 5 and 10
 
@@ -95,8 +109,13 @@ Take the bestparam and run GridSearchCV with more narrow ranges
 
 ```mermaid
 flowchart LR
-    A[Hard] -->|Text| B(Round)
-    B --> C{Decision}
-    C -->|One| D[Result 1]
-    C -->|Two| E[Result 2]
+    A[All] -->|pipe_num| B(Impute_num)
+    B --> G(Model)
+    A-->|pipe_cat_all| C(Impute_cat)
+    C--> |split_cats|E(Encode_cat)
+    C--> |split_cats|F(Encode_cat_qu)
+    C--> |split_cats|W(Encode_cat_ord)
+    W-->G(Model)
+    F-->G(Model)
+    E-->G(Model)
 ```
